@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">AlbumViewer</string>
+
+    <string-array name="album_names">
+        <item>album_1</item>
+        <item>album_2</item>
+        <item>album_3</item>
+    </string-array>
+
+    <string-array name="artist_names">
+        <item>artist_1</item>
+        <item>artist_2</item>
+        <item>artist_3</item>
+    </string-array>
+
+    <string-array name="album1">
+        <item>song_1</item>
+        <item>song_2</item>
+        <item>song_3</item>
+    </string-array>
+
+    <string-array name="album2">
+        <item>song_1</item>
+        <item>song_2</item>
+        <item>song_3</item>
+    </string-array>
+
+    <string-array name="album3">
+        <item>song_1</item>
+        <item>song_2</item>
+        <item>song_3</item>
+    </string-array>
+</resources>
