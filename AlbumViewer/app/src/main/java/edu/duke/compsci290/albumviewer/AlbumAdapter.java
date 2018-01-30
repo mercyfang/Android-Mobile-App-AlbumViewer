@@ -91,7 +91,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
             albumNameCap += " ";
         }
         holder.mAlbumName.setText(albumNameCap);
-        holder.mArtist.setText(mArtists[position]);
+        holder.mArtist.setText("By " + mArtists[position]);
     }
 
     private void openAlbum(String albumName) {
