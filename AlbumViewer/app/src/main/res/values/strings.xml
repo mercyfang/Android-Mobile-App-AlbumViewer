@@ -32,5 +32,6 @@
     </string-array>
 
     <string name="albumnamekey">album_name_key</string>
+    <string name="artistnamekey">artist_name_key</string>
     <string name="songnamekey">song_name_key</string>
 </resources>

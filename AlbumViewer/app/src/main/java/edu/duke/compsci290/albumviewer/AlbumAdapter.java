@@ -64,7 +64,9 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
         albumHolder.mLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openAlbum(mAlbums[albumHolder.getAdapterPosition()]);
+                openAlbum(
+                        mAlbums[albumHolder.getAdapterPosition()],
+                        mArtists[albumHolder.getAdapterPosition()]);
             }
         });
 
@@ -94,10 +96,11 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
         holder.mArtist.setText("By " + mArtists[position]);
     }
 
-    private void openAlbum(String albumName) {
+    private void openAlbum(String albumName, String artistName) {
         Log.d(TAG, "Opening album " + albumName);
         Intent intent = new Intent(mContext, AlbumActivity.class);
         intent.putExtra(mContext.getString(R.string.albumnamekey), albumName);
+        intent.putExtra(mContext.getString(R.string.artistnamekey), artistName);
         mContext.startActivity(intent);
     }
 }

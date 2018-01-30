@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import java.util.Arrays;
-
 public class AlbumActivity extends AppCompatActivity {
 
     @Override
@@ -17,20 +15,21 @@ public class AlbumActivity extends AppCompatActivity {
 
         Intent receivedIntent = this.getIntent();
         String albumName = receivedIntent.getStringExtra(getString(R.string.albumnamekey));
+        String artistName = receivedIntent.getStringExtra(getString(R.string.artistnamekey));
         int albumId = getResources().getIdentifier(albumName, "array", getPackageName());
         String[] songs = getResources().getStringArray(albumId);
 
         String[] albums = new String[1];
         albums[0] = albumName;
         String[] artists = new String[1];
-        int idx = Arrays.asList(
-                getResources().getStringArray(R.array.album_names)).indexOf(albumName);
-        artists[0] = getResources().getStringArray(R.array.artist_names)[idx];
+        artists[0] = artistName;
 
+        // One RecyclerView to display album information.
         RecyclerView rv2 = findViewById(R.id.activity_album_recycler_view_2);
         rv2.setAdapter(new AlbumAdapter(this, albums, artists));
         rv2.setLayoutManager(new LinearLayoutManager(this));
 
+        // One RecyclerView to display songs.
         RecyclerView rv = findViewById(R.id.activity_album_recycler_view);
         rv.setAdapter(new SongAdapter(this, songs));
         rv.setLayoutManager(new LinearLayoutManager(this));
