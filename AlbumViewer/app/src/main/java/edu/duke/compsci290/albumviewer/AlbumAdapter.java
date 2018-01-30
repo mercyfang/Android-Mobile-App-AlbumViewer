@@ -1,8 +1,10 @@
 package edu.duke.compsci290.albumviewer;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
- * Created by MercyFang on 1/27/18.
+ * Created by Mercy Fang on 1/27/18.
  */
 
 public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
@@ -35,6 +37,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     private Context mContext;
     private String[] mAlbums;
     private String[] mArtists;
+    private static final String TAG = "AlbumAdapter";
 
     public AlbumAdapter(final Context context, String[] albums, String[] artists) {
         mContext = context;
@@ -53,14 +56,43 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
                 (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = mInflater.inflate(R.layout.album_holder, parent, false);
         final ViewHolder albumHolder = new ViewHolder(row);
+
+        // Display the details of the album when user taps on it.
+        albumHolder.mLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAlbum(mAlbums[albumHolder.getAdapterPosition()]);
+            }
+        });
+
         return albumHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Drawable albumArtwork = mContext.getDrawable(android.R.drawable.ic_dialog_info);
+        String albumName = mAlbums[position].toLowerCase().replaceAll("\\W+", "");
+        int drawableId = mContext.getResources().getIdentifier(
+                albumName, "drawable", mContext.getPackageName());
+        Drawable albumArtwork = mContext.getDrawable(drawableId);
+
         holder.mImageView.setImageDrawable(albumArtwork);
-        holder.mAlbumName.setText(mAlbums[position]);
+        String albumNameCap = "";
+        for (String s : albumName.split("_")) {
+            if (s.equals("of") || s.equals("the")) {
+                albumNameCap += s;
+            } else {
+                albumNameCap += s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+            }
+            albumNameCap += " ";
+        }
+        holder.mAlbumName.setText(albumNameCap);
         holder.mArtist.setText(mArtists[position]);
+    }
+
+    private void openAlbum(String albumName) {
+        Log.d(TAG, "Opening album " + albumName);
+        Intent intent = new Intent(mContext, AlbumActivity.class);
+        intent.putExtra(mContext.getString(R.string.albumnamekey), albumName);
+        mContext.startActivity(intent);
     }
 }

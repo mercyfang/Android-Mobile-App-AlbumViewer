@@ -2,32 +2,34 @@
     <string name="app_name">AlbumViewer</string>
 
     <string-array name="album_names">
-        <item>album_1</item>
-        <item>album_2</item>
-        <item>album_3</item>
+        <item>dark_side_of_the_moon</item>
+        <item>music_complete</item>
+        <item>unknown_pleasures</item>
     </string-array>
 
     <string-array name="artist_names">
-        <item>artist_1</item>
-        <item>artist_2</item>
-        <item>artist_3</item>
+        <item>Pink Floyd</item>
+        <item>New Order</item>
+        <item>Joy Division</item>
     </string-array>
 
-    <string-array name="album1">
-        <item>song_1</item>
-        <item>song_2</item>
-        <item>song_3</item>
+    <string-array name="dark_side_of_the_moon">
+        <item>On the Run</item>
+        <item>Time</item>
+        <item>Money</item>
     </string-array>
 
-    <string-array name="album2">
-        <item>song_1</item>
-        <item>song_2</item>
-        <item>song_3</item>
+    <string-array name="music_complete">
+        <item>Restless</item>
+        <item>Singularity</item>
+        <item>Plastic</item>
     </string-array>
 
-    <string-array name="album3">
-        <item>song_1</item>
-        <item>song_2</item>
-        <item>song_3</item>
+    <string-array name="unknown_pleasures">
+        <item>Disorder</item>
+        <item>Day of the Lords</item>
+        <item>Candidate</item>
     </string-array>
+
+    <string name="albumnamekey">album_name_key</string>
 </resources>
