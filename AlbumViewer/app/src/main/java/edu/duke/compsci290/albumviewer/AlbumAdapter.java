@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
+ * Displays album cover, corresponding album name and artist side by side. User could also click on
+ * each cover to check details about the album.
+ *
  * Created by Mercy Fang on 1/27/18.
  */
 
@@ -76,6 +79,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
         Drawable albumArtwork = mContext.getDrawable(drawableId);
 
         holder.mImageView.setImageDrawable(albumArtwork);
+
+        // Display standardized album name by capitalizing first letter of each word.
         String albumNameCap = "";
         for (String s : albumName.split("_")) {
             if (s.equals("of") || s.equals("the")) {
